@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+#bottom_pat{
+    background: linear-gradient(transparent, black);
+}
