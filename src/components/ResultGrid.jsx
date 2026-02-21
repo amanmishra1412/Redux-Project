@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { getPhoto, getVideo } from "../api/media";
 import {
-    setActiveTabs,
     setError,
     setLoading,
-    setQuery,
     setResults,
 } from "../redux/features/searchSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,7 +49,7 @@ const ResultGrid = () => {
             }
         };
         getData();
-    }, [query, activeTab]);
+    }, [query, activeTab, dispatch]);
 
     if (error) return <h1>Error</h1>;
     if (loading) return <h1>Loading</h1>;
@@ -61,9 +59,7 @@ const ResultGrid = () => {
             {results.map((elem, idx) => {
                 return (
                     <div key={idx}>
-                        <a href={elem.links}>
-                            <ResultCard data={elem} />
-                        </a>
+                        <ResultCard data={elem} />
                     </div>
                 );
             })}
